@@ -10,7 +10,7 @@ namespace EBusiness.Data.Models
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=DESKTOP-OBUOUFV;database=ecbusinessDB; integrated security=true;");
+            optionsBuilder.UseSqlServer("server=localhost;database=ecbusinessDB; integrated security=true;");
         }
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
