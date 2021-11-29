@@ -1,0 +1,27 @@
+﻿@model List<EBusiness.Data.Models.Category>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2 style="font-size: 30px;">Kategorieliste</h2>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th style="font-size: 20px;">ID</th>
+        <th style="font-size: 20px;">Kategoriename</th>
+        <th style="font-size: 20px;">Löschen</th>
+        <th style="font-size: 20px;">Aktualisieren</th>
+    </tr>
+    @foreach(var x in Model)
+            {
+                <tr>
+                    <td style="font-size: 20px;">@x.CategoryID</td>
+                    <td style="font-size: 20px;">@x.CategoryName</td>
+                    <td ><a href="#" class="btn btn-danger" style="font-size: 15px;">Löschen</a></td>
+                    <td><a href="#" class="btn btn-success" style="font-size: 15px;">Aktulisieren</a></td>
+                </tr>
+            }
+</table>
+<br />
+<a href="/Category/CategoryAdd/" class="btn btn-primary" style="font-size: 15px;">Neue Kategorie hinzufügen</a>

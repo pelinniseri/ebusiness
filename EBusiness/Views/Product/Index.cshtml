@@ -1,0 +1,37 @@
+﻿@model List<EBusiness.Data.Models.Product>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 style="font-size: 30px;">Produktliste</h2>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th style="font-size: 20px;">ID</th>
+        <th style="font-size: 20px;">Produktname</th>
+        <th style="font-size: 20px;">Preis</th>
+        <th style="font-size: 20px;">Stock</th>
+        <th style="font-size: 20px;">Categoryname</th>
+        <th style="font-size: 20px;">Löschen</th>
+        <th style="font-size: 20px;">Aktualisieren</th>
+        <th style="font-size: 20px;">Detail</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td style="font-size: 20px;">@x.ProductID</td>
+            <td style="font-size: 20px;">@x.ProductName</td>
+            <td style="font-size: 20px;">@x.Price</td>
+            <td style="font-size: 20px;">@x.Stock</td>
+            <td style="font-size: 20px;">@x.Category.CategoryName</td>
+            <td><a href="#" class="btn btn-danger" style="font-size: 15px;">Löschen</a></td>
+            <td><a href="#" class="btn btn-success" style="font-size: 15px;">Aktulisieren</a></td>
+            <td><a href="#" class="btn btn-info" style="font-size: 15px;">Detail</a></td>
+        </tr>
+    }
+</table>
+<br />
+<a href="/Product/ProductAdd/" class="btn btn-primary" style="font-size: 15px;">Neue Produkt hinzufügen</a>
+
