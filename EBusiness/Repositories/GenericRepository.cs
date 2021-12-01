@@ -32,9 +32,9 @@ namespace EBusiness.Repositories
             c.Set<T>().Update(p);
             c.SaveChanges();
         }
-        public void TFind(int id)
+        public T TFind(int id)
         {
-            c.Set<T>().Find(id);
+           return  c.Set<T>().Find(id);
 
         }
         public List<T> TList(string p)

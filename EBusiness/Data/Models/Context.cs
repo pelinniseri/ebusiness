@@ -12,7 +12,7 @@ namespace EBusiness.Data.Models
         {
             optionsBuilder.UseSqlServer("server=localhost;database=ecbusinessDB; integrated security=true;");
         }
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
     }
 }

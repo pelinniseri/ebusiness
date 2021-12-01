@@ -13,6 +13,7 @@ namespace EBusiness.Data.Models
         [StringLength(20, ErrorMessage = "Kategoriename darf nicht länger als 20 Zeichen sein, nicht weniger als 4 Zeichen!", MinimumLength =5)]
         public string CategoryName { get; set; }
         public string CategoryDescription { get; set; }
+        public bool Status { get; set; }
         public ICollection<Product> Products { get; set; }
     }
 }

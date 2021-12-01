@@ -30,8 +30,41 @@ namespace EBusiness.Controllers
             {
                 return View("CategoryAdd");
             }
+            p.Status = true;
             categoryRepository.TAdd(p);
-            return View();
+            return RedirectToAction("Index");
+        }
+
+
+        public IActionResult CategoryGet(int id)
+        {
+            var x = categoryRepository.TFind(id);
+            Category ct = new Category()
+            {
+                CategoryName = x.CategoryName,
+                CategoryDescription = x.CategoryDescription,
+                CategoryID = x.CategoryID,
+
+            };
+            return View(ct);
+        }
+
+        [HttpPost]
+        public IActionResult CategoryUpdate(Category ctgry)
+        {
+            var x = categoryRepository.TFind(ctgry.CategoryID);
+            x.CategoryName = ctgry.CategoryName;
+            x.CategoryDescription = ctgry.CategoryDescription;
+            x.Status = ctgry.Status;
+            categoryRepository.TUpdate(x);
+            return RedirectToAction("Index");
+        }
+        public IActionResult CategoryDelete(int id)
+        {
+            var x = categoryRepository.TFind(id);
+            x.Status = false;
+            categoryRepository.TUpdate(x);
+            return RedirectToAction("Index");
         }
     }
 }

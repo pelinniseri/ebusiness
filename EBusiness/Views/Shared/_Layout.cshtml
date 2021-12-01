@@ -1,224 +1,192 @@
-﻿
-@{
-    Layout = null;
-}
-
-
+﻿<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
 <!DOCTYPE html>
-<html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" href="~/wwwroot/material-dashboard-html-v2.0.0/BS4/assets/img/apple-icon.png">
-    <link rel="icon" href="~/material-dashboard-html-v2.0.0/BS4/assets/img/favicon.png">
-    <title>
-        Admin
-    </title>
-    <!--     Fonts and icons     -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="~/material-dashboard-html-v2.0.0/BS4/assets/css/material-dashboard.css?v=2.0.0">
-    <!-- Documentation extras -->
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="~/material-dashboard-html-v2.0.0/BS4/assets/assets-for-demo/demo.css" rel="stylesheet" />
-    <!-- iframe removal -->
+    <title>Admin Panel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- bootstrap-css -->
+    <link rel="stylesheet" href="~/Webb/css/bootstrap.min.css">
+    <!-- //bootstrap-css -->
+    <!-- Custom CSS -->
+    <link href="~/Webb/css/style.css" rel='stylesheet' type='text/css' />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <link href="~/Webb/css/style-responsive.css" rel="stylesheet" />
+    <!-- font CSS -->
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <!-- font-awesome icons -->
+    <link rel="stylesheet" href="~/Webb/css/font.css" type="text/css" />
+    <link href="~/Webb/css/font-awesome.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <script src="~/Webb/js/jquery2.0.3.min.js"></script>
 </head>
+<body>
+    <section id="container">
+        <!--header start-->
+        <header class="header fixed-top clearfix">
+            <!--logo start-->
+            <div class="brand">
 
-<body class="">
-    <div class="wrapper">
-        <div class="sidebar" data-color="purple"  data-image="~/material-dashboard-html-v2.0.0/BS4/assets/img/sidebar-1.jpg">
-            <!--
-
-            -->
-            <div class="logo">
-                <a href="#" class="simple-text logo-normal">
-                    Admin
+                <a href="index.html" class="logo">
+                   ADMIN PANEL
                 </a>
+                <div class="sidebar-toggle-box">
+                    <div class="fa fa-bars"></div>
+                </div>
             </div>
-            <div class="sidebar-wrapper">
-                <ul class="nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/Category/Index/">
-                            <i class="material-icons"><span class="material-icons-outlined">category</span></i>
-                            <p>Kategorien</p>
-                        </a>
+            <!--logo end-->
+
+            <div class="nav notify-row" id="top_menu">
+                <!--  notification start -->
+                <!--  notification end -->
+            </div>
+            <div class="top-nav clearfix">
+                <!--search & user info start-->
+                <ul class="nav pull-right top-menu">
+                    <li>
+                        <input type="text" class="form-control search" placeholder=" Search">
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="/Product/Index/">
-                            <i class="material-icons"><span class="material-icons-outlined">inventory_2</span></i>
-                            <p>Produkte</p>
+                    <!-- user login dropdown start-->
+                    <li class="dropdown" style="padding-right:10px">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span>   Profile </span>
+                            <b class="caret"></b>
                         </a>
+                        <ul class="dropdown-menu extended logout">
+                            <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
+                            <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+                            <li><a href="#"><i class="fa fa-key"></i> Log Out</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="material-icons"><span class="material-icons-outlined">pie_chart</span></i>
-                            <p>Google Charts</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="#">
-                            <i class="material-icons"><span class="material-icons-outlined">assessment</span></i>
-                            <p>Statistiken</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="#">
-                            <i class="material-icons"><span class="material-icons-outlined">settings</span></i>
-                            <p>Einstellungen</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="#">
-                            <i class="material-icons">location_ons</i>
-                            <p>Hakkımızda</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="#">
-                            <i class="material-icons"><span class="material-icons-outlined">logout</span></i>
-                            <p>Ausloggen</p>
-                        </a>
-                    </li>
+
 
                 </ul>
+
             </div>
-        </div>
+        </header>
+        <!--header end-->
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar" class="nav-collapse">
+                <!-- sidebar menu start-->
+                <div class="leftside-navigation">
+                    <ul class="sidebar-menu" id="nav-accordion">
+                        <li>
+                            <a href="/Category/Index/">
+                                <i class="material-icons"><span class="material-icons-outlined">category</span></i>
+                                <span>Kategorien</span>
+                            </a>
+                        </li>
 
-        <div class="main-panel">
-            <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute fixed-top">
-                <div class="container-fluid">
-
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="navbar-toggler-icon icon-bar"></span>
-                        <span class="navbar-toggler-icon icon-bar"></span>
-                        <span class="navbar-toggler-icon icon-bar"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                        <form class="navbar-form">
-                            <div class="input-group no-border">
-                                <input type="text" value="" class="form-control" placeholder="Search...">
-                                <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                    <i class="material-icons">search</i>
-                                    <div class="ripple-container"></div>
-                                </button>
-                            </div>
-                        </form>
-
-                    </div>
+                        
+                        <li>
+                            <a href="/Product/Index/">
+                                <i class="material-icons"><span class="material-icons-outlined">inventory_2</span></i>
+                                <span>Produkte </span>
+                            </a>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fa fa-th"></i>
+                                <span>Data Tables</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="basic_table.html">Basic Table</a></li>
+                                <li><a href="responsive_table.html">Responsive Table</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fa fa-tasks"></i>
+                                <span>Form Components</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="form_component.html">Form Elements</a></li>
+                                <li><a href="form_validation.html">Form Validation</a></li>
+                                <li><a href="dropzone.html">Dropzone</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fa fa-envelope"></i>
+                                <span>Mail </span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="mail.html">Inbox</a></li>
+                                <li><a href="mail_compose.html">Compose Mail</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class=" fa fa-bar-chart-o"></i>
+                                <span>Charts</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="chartjs.html">Chart js</a></li>
+                                <li><a href="flot_chart.html">Flot Charts</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class=" fa fa-bar-chart-o"></i>
+                                <span>Maps</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="google_map.html">Google Map</a></li>
+                                <li><a href="vector_map.html">Vector Map</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fa fa-glass"></i>
+                                <span>Extra</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="gallery.html">Gallery</a></li>
+                                <li><a href="404.html">404 Error</a></li>
+                                <li><a href="registration.html">Registration</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="login.html">
+                                <i class="fa fa-user"></i>
+                                <span>Login Page</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-            </nav>
-            <!-- End Navbar -->
-            <div class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            @RenderBody()
-                        </div>
-
-                    </div>
-                </div>
+                <!-- sidebar menu end-->
             </div>
+        </aside>
+        <!--sidebar end-->
+        <!--main content start-->
+        <section id="main-content">
+            <section class=" wrapper">
+                <div class="agile-grid">
 
-        </div>
+                    @RenderBody()
 
+                </div>
+            </section>
 
-    </div>
+        </section>
+
+        <!--main content end-->
+    </section>
+    <script src="~/Webb/js/bootstrap.js"></script>
+    <script src="~/Webb/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="~/Webb/js/scripts.js"></script>
+    <script src="~/Webb/js/jquery.slimscroll.js"></script>
+    <script src="~/Webb/js/jquery.nicescroll.js"></script>
+    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
+    <script src="~/Webb/js/jquery.scrollTo.js"></script>
 </body>
-<!--   Core JS Files   -->
-<script src="~/material-dashboard-html-v2.0.0/BS4/assets/js/core/jquery.min.js"></script>
-<script src="~/material-dashboard-html-v2.0.0/BS4/assets/js/core/popper.min.js"></script>
-<script src="~/material-dashboard-html-v2.0.0/BS4/assets/js/bootstrap-material-design.js"></script>
-<script src="~/material-dashboard-html-v2.0.0/BS4/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-<!--  Charts Plugin, full documentation here: https://gionkunz.github.io/chartist-js/ -->
-<script src="~/material-dashboard-html-v2.0.0/BS4/assets/js/plugins/chartist.min.js"></script>
-<!-- Library for adding dinamically elements -->
-<script src="~/material-dashboard-html-v2.0.0/BS4/assets/js/plugins/arrive.min.js" type="text/javascript"></script>
-<!--  Notifications Plugin, full documentation here: http://bootstrap-notify.remabledesigns.com/    -->
-<script src="~/material-dashboard-html-v2.0.0/BS4/assets/js/plugins/bootstrap-notify.js"></script>
-<!-- Material Dashboard Core initialisations of plugins and Bootstrap Material Design Library -->
-<script src="~/material-dashboard-html-v2.0.0/BS4/assets/js/material-dashboard.js?v=2.0.0"></script>
-<!-- demo init -->
-<script src="~/material-dashboard-html-v2.0.0/BS4/assets/js/plugins/demo.js"></script>
-<!--
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- -->
-
 </html>
-
-@*<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <title>Bootstrap Example</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    </head>
-    <body>
-
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Core And Food</a>
-                </div>
-                <ul class="nav navbar-nav">
-                    <li><a href="/Category/Index/">Category</a></li>
-                    <li><a href="/Food/Index/">Food</a></li>
-                    <li><a href="/Chart/Index/">Google Pie Chart</a></li>
-                    <li><a href="/Chart/Index2/">Google Column Chart</a></li>
-                    <li><a href="/Chart/Index3/">Google Dynamic Chart</a></li>
-                    <li><a href="#">Popup</a></li>
-                    <li><a href="/Chart/Statistics">Statistics</a></li>
-                    <li><a href="#">Settings</a></li>
-                    <li><a href="/Login/LogOut/">Log Out</a></li>
-                </ul>
-            </div>
-        </nav>
-
-        <div class="container">
-            @RenderBody()
-        </div>
-
-    </body>
-    </html>*@
