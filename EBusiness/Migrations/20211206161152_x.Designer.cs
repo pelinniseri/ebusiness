@@ -3,44 +3,22 @@ using EBusiness.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EBusiness.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20211206161152_x")]
+    partial class x
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("EBusiness.Data.Models.Admin", b =>
-                {
-                    b.Property<int>("AdminID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Password")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("Role")
-                        .HasMaxLength(1)
-                        .HasColumnType("nvarchar(1)");
-
-                    b.Property<string>("Username")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.HasKey("AdminID");
-
-                    b.ToTable("Admins");
-                });
 
             modelBuilder.Entity("EBusiness.Data.Models.Category", b =>
                 {
@@ -95,42 +73,6 @@ namespace EBusiness.Migrations
                     b.HasIndex("CategoryID");
 
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("EBusiness.Data.Models.User", b =>
-                {
-                    b.Property<int>("Userid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Durum")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserAd")
-                        .HasMaxLength(30)
-                        .HasColumnType("Varchar(30)");
-
-                    b.Property<string>("UserMail")
-                        .HasMaxLength(50)
-                        .HasColumnType("Varchar(50)");
-
-                    b.Property<string>("UserSehir")
-                        .HasMaxLength(13)
-                        .HasColumnType("Varchar(13)");
-
-                    b.Property<string>("UserSifre")
-                        .HasMaxLength(10)
-                        .HasColumnType("Varchar(10)");
-
-                    b.Property<string>("UserSoyad")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("Varchar(30)");
-
-                    b.HasKey("Userid");
-
-                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("EBusiness.Data.Models.Product", b =>

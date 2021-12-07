@@ -5,24 +5,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EBusiness.Data.Models;
+using Microsoft.AspNetCore.Authorization;
+
 namespace EBusiness.Controllers
 {
+    
+   
     public class CategoryController : Controller
     {
         CategoryRepository categoryRepository = new CategoryRepository();
+       
+        [Authorize]
         public IActionResult Index()
         {
             
             return View(categoryRepository.TList());
         }
-
+        [Authorize]
         [HttpGet]
         public IActionResult CategoryAdd()
         {
             return View();
 
         }
-
+        [Authorize]
         [HttpPost]
         public IActionResult CategoryAdd(Category p)
         {
@@ -35,7 +41,7 @@ namespace EBusiness.Controllers
             return RedirectToAction("Index");
         }
 
-
+        [Authorize]
         public IActionResult CategoryGet(int id)
         {
             var x = categoryRepository.TFind(id);
@@ -48,7 +54,7 @@ namespace EBusiness.Controllers
             };
             return View(ct);
         }
-
+        [Authorize]
         [HttpPost]
         public IActionResult CategoryUpdate(Category ctgry)
         {
@@ -59,6 +65,7 @@ namespace EBusiness.Controllers
             categoryRepository.TUpdate(x);
             return RedirectToAction("Index");
         }
+        [Authorize]
         public IActionResult CategoryDelete(int id)
         {
             var x = categoryRepository.TFind(id);
