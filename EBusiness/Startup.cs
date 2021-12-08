@@ -74,7 +74,7 @@ namespace EBusiness
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}"
+                    template: "{controller=Contact}/{action=Index}/{id?}"
                     );
             });
         }

@@ -1,4 +1,5 @@
-﻿using EBusiness.Data.Models;
+﻿using EBusiness.Areas.Identity.Data;
+using EBusiness.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -21,10 +22,10 @@ namespace EBusiness.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult RegisterUser(User p)
+        public IActionResult RegisterUser(EBusinessUser p)
         {
             c.Users.Add(p);
-            p.Durum = true;
+            //p.Durum = true;
             c.SaveChanges();
             return RedirectToAction("Index","Login");
         }

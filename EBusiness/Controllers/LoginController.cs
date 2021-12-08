@@ -1,4 +1,5 @@
-﻿using EBusiness.Data.Models;
+﻿using EBusiness.Areas.Identity.Data;
+using EBusiness.Data.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
@@ -25,14 +26,14 @@ namespace EBusiness.Controllers
         }
         [HttpPost]
         [AllowAnonymous]
-        public IActionResult Index(User p)
+        public IActionResult Index(EBusinessUser p)
         {
-            var deger = c.Users.FirstOrDefault(x => x.UserMail == p.UserMail &&
-              x.UserSifre == p.UserSifre);
+            var deger = c.Users.FirstOrDefault(x => x.Email == p.Email &&
+              x.Password == p.Password);
 
             if(deger!= null)
             {
-                HttpContext.Session.SetString("UserMail", p.UserMail);
+                HttpContext.Session.SetString("Email", p.Email);
                 return RedirectToAction("Index", "Contact");
             }
             return View();
