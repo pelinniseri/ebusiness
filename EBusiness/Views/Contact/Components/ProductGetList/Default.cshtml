@@ -1,0 +1,44 @@
+﻿@model IEnumerable<EBusiness.Data.Models.Product>
+<section class="section featured">
+    <div class="title">
+        <h1>Neueste Produkte</h1>
+    </div>
+    <div class="product-center container">
+        @foreach (var item in Model)
+        {
+
+
+
+            <div class="product">
+                <div class="product-header">
+                    <img src="@item.ImageUrl" alt="">
+
+                    <ul class="icons">
+                        <span><i class="bx bx-heart"></i></span>
+                        <span><i class="bx bx-shopping-bag"></i></span>
+                        
+                    </ul>
+                </div>
+                <div class="product-footer">
+                    <a href="#">
+                        <h3>
+                            @item.ProductName
+                        </h3>
+                    </a>
+                    <div class="rating">
+                        <i class="bx bxs-star"></i>
+                        <i class="bx bxs-star"></i>
+                        <i class="bx bxs-star"></i>
+                        <i class="bx bxs-star"></i>
+                        <i class="bx bx-star"></i>
+                    </div>
+                    <h4 class="price">@item.Price €</h4>
+                   
+                    <h5 >Stok: @item.Stock</h5>
+                </div>
+            </div>
+
+
+        }
+    </div>
+    </section>

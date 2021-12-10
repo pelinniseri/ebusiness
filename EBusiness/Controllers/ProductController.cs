@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using X.PagedList;
@@ -40,7 +41,23 @@ namespace EBusiness.Controllers
         [HttpPost]
         public IActionResult ProductAdd(Product pr)
         {
-        
+            //Product product = new Product();
+            //if (pr.ImageUrl != null)
+            //{
+            //    var extension = Path.GetExtension(pr.ImageUrl.FileName);
+            //    var newimagename = Guid.NewGuid() + extension;
+            //    var location = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot/Photos/",newimagename);
+            //    var stream = new FileStream(location, FileMode.Create);
+            //    pr.ImageUrl.CopyTo(stream);
+            //    product.ImageUrl = newimagename;
+
+            //}
+            //product.ProductName = pr.ProductName;
+            //product.Price = pr.Price;
+            //product.Stock = pr.Stock;
+            //product.CategoryID = pr.CategoryID;
+            //product.Description = pr.Description;
+            
             productRepository.TAdd(pr);
             return RedirectToAction("Index");
         }

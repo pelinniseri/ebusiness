@@ -22,6 +22,7 @@
     <br />
     @Html.Label("Image")
     @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+    
     <br />
     @Html.Label("Kategorie")
     @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.v1, new { @class = "form-control" })
