@@ -31,6 +31,7 @@ namespace EBusiness.Data.Models
         [StringLength(10)]
         public string UserSifre { get; set; }
         public bool Durum { get; set; }
+        public string Role { get; set; }
 
     }
 }

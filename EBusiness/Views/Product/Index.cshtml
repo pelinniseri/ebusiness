@@ -16,8 +16,8 @@
         <th style="font-size: 20px;">Preis</th>
         <th style="font-size: 20px;">Stock</th>
         <th style="font-size: 20px;">Kategoriename</th>
-        <th style="font-size: 20px;">Description</th>
-        <th style="font-size: 20px;">Foto</th>
+      
+        @*<th style="font-size: 20px;">Foto</th>*@
         <th style="font-size: 20px;">Löschen</th>
         <th style="font-size: 20px;">Aktualisieren</th>
         <th style="font-size: 20px;">Detail</th>
@@ -30,8 +30,8 @@
     <td style="font-size: 20px;">@x.Price</td>
     <td style="font-size: 20px;">@x.Stock</td>
     <td style="font-size: 20px;">@x.Category.CategoryName</td>
-    <td style="font-size: 20px;">@x.Description</td>
-    <td style="font-size: 20px;">@x.ImageUrl</td>
+
+    @*<td style="font-size: 20px;">@x.ImageUrl</td>*@
     <td><a href="/Product/ProductDelete/@x.ProductID/" class="btn btn-danger" style="font-size: 15px;">Löschen</a></td>
     <td><a href="/Product/ProductGet/@x.ProductID/" class="btn btn-success" style="font-size: 15px;">Aktulisieren</a></td>
     <td><a href="#" class="btn btn-info" style="font-size: 15px;">Detail</a></td>

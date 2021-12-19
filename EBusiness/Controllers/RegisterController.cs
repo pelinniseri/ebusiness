@@ -25,6 +25,7 @@ namespace EBusiness.Controllers
         {
             c.Users.Add(p);
             p.Durum = true;
+            p.Role = "User";
             c.SaveChanges();
             return RedirectToAction("Index","Login");
         }

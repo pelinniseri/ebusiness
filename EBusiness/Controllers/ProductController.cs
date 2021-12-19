@@ -13,7 +13,7 @@ using X.PagedList;
 
 namespace EBusiness.Controllers
 {
- 
+    [Authorize(Roles = "Admin")]
     public class ProductController : Controller
     {
         Context c = new Context();

@@ -9,26 +9,26 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace EBusiness.Controllers
 {
-    
-   
+
+    [Authorize(Roles = "Admin")]
     public class CategoryController : Controller
     {
         CategoryRepository categoryRepository = new CategoryRepository();
+
        
-        [Authorize]
         public IActionResult Index()
         {
             
             return View(categoryRepository.TList());
         }
-        [Authorize]
+        
         [HttpGet]
         public IActionResult CategoryAdd()
         {
             return View();
 
         }
-        [Authorize]
+        
         [HttpPost]
         public IActionResult CategoryAdd(Category p)
         {
@@ -41,7 +41,7 @@ namespace EBusiness.Controllers
             return RedirectToAction("Index");
         }
 
-        [Authorize]
+       
         public IActionResult CategoryGet(int id)
         {
             var x = categoryRepository.TFind(id);
@@ -54,7 +54,7 @@ namespace EBusiness.Controllers
             };
             return View(ct);
         }
-        [Authorize]
+       
         [HttpPost]
         public IActionResult CategoryUpdate(Category ctgry)
         {
@@ -65,12 +65,15 @@ namespace EBusiness.Controllers
             categoryRepository.TUpdate(x);
             return RedirectToAction("Index");
         }
-        [Authorize]
+       
         public IActionResult CategoryDelete(int id)
         {
-            var x = categoryRepository.TFind(id);
-            x.Status = false;
-            categoryRepository.TUpdate(x);
+            //var x = categoryRepository.TFind(id);
+            //x.Status = false;
+            //categoryRepository.TUpdate(x);
+            //return RedirectToAction("Index");
+            categoryRepository.TDelete(new Category { CategoryID = id });
+
             return RedirectToAction("Index");
         }
     }

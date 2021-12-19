@@ -1,4 +1,7 @@
-﻿
+﻿@model EBusiness.Data.Models.User
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +13,7 @@
     <!-- Box icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-   
+
 
 
 
@@ -43,7 +46,7 @@
                     </div>
 
                     <ul class="nav-list">
-                        
+
                         <li class="dropdown">
                             <a href="javascript:void(0)" class="dropbtn">Kategorien</a>
                             @await Component.InvokeAsync("CategoryGetList")
@@ -70,28 +73,49 @@
                     <i class="bx bx-shopping-bag"></i>
                 </a>
 
-                <div class="hamburger">
-                    <i class="bx bx-menu"></i>
-                </div>
+
             </div>
         </nav>
 
 
-        <img src="~/Frontend/images/hdr.png" alt="" class="hero-img" />
-        <div class="hero-content">
-            <h2><span class="discount">50% </span>AUSVERKAUF</h2>
-            <h1>
-                <span>Cyber-Montag</span>
-                <span>Sonderangebot</span>
-            </h1>
-            <a class="btn" href="#">JETZT EINKAUFEN</a>
+
+
+
+        <div style="display: flex; justify-content: center; align-items: center; padding-top:200px; outline: none">
+            @using (Html.BeginForm("KontoUpdate", "Contact", FormMethod.Post))
+            {
+                @Html.HiddenFor(x => x.Userid)
+                @Html.Label("User Name   ")
+                @Html.TextBoxFor(x => x.UserAd, new { @class = "form-control" })
+
+                <br />
+
+                @Html.Label("User Surname   ")
+                @Html.TextBoxFor(x => x.UserSoyad, new { @class = "form-control" })
+                <br />
+                @Html.Label("User City   ")
+                @Html.TextBoxFor(x => x.UserSehir, new { @class = "form-control" })
+                <br />
+                @Html.Label("User Mail   ")
+                @Html.TextBoxFor(x => x.UserMail, new { @class = "form-control" })
+                <br />
+                @Html.Label("User Password   ")
+                @Html.TextBoxFor(x => x.UserSifre, new { @class = "form-control" })
+                <br />
+
+
+
+
+                <br />
+                <button class="btn btn-warning" style="font-size: 15px">Aktualisieren</button>
+
+
+            }
         </div>
 
     </header>
 
 
-    @await Component.InvokeAsync("ProductGetList")
-    @RenderBody()
 
 
 

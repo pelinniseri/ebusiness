@@ -28,11 +28,11 @@ namespace EBusiness
         {
             services.AddSession();
             services.AddMvc(options => options.EnableEndpointRouting = false);
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).
-                AddCookie(x=>
-                {
-                    x.LoginPath = "/Login/AdminIndex";
-                });
+            //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).
+            //    AddCookie(x =>
+            //    {
+            //        x.LoginPath = "/Login/Index";
+            //    });
             //services.AddMvc(config =>
             //{
             //    var policy = new AuthorizationPolicyBuilder()
@@ -41,7 +41,13 @@ namespace EBusiness
             //    config.Filters.Add(new AuthorizeFilter(policy));
             //});
 
-         
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
+            });
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,10 +66,12 @@ namespace EBusiness
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseAuthentication();
+            
             app.UseRouting();
             app.UseSession();
             app.UseAuthorization();
+            app.UseCookiePolicy();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
