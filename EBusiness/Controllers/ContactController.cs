@@ -68,21 +68,21 @@ namespace EBusiness.Controllers
 
         }
         [HttpPost]
-        public IActionResult KontoUpdate()
+        public IActionResult KontoUpdate(User usr)
         {
             var usermailx = User.Identity.Name;
-            
             var useridx = c.Users.Where(x => x.UserMail == usermailx).Select(y => y.Userid).FirstOrDefault();
-            var username = c.Users.Where(x => x.UserMail == usermailx).Select(y => y.UserAd).FirstOrDefault();
-            var values = c.Users.Find(useridx);
             
-            values.UserAd=username;
-            values.UserSoyad = values.UserSoyad;
-            values.UserSehir = values.UserSehir;
-            values.UserMail = values.UserMail;
-            values.UserSifre = values.UserSifre;
+            //var username = c.Users.Where(x => x.UserMail == usermailx).Select(y => y.UserAd).FirstOrDefault();
+            var values = c.Users.Find(useridx);
+          
+            values.UserAd=usr.UserAd;
+            values.UserSoyad = usr.UserSoyad;
+            values.UserSehir = usr.UserSehir;
+            values.UserMail = usr.UserMail;
+            values.UserSifre = usr.UserSifre;
 
-           
+            c.SaveChanges();
             return RedirectToAction("Index");
         }
     }
