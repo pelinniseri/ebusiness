@@ -4,9 +4,12 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -15,6 +18,7 @@ namespace EBusiness.Controllers
     
     public class LoginController : Controller
     {
+        private string code = null;
         Context c = new Context();
 
         [HttpGet]
@@ -122,5 +126,81 @@ namespace EBusiness.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index", "Login");
         }
+        
+        
+        
+        
+        
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ForgetPassword()
+        {
+            return View();
+
+        }
+
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ResetPassword()
+        {
+            return View();
+
+        }
+
+        public string getCode()
+        {
+            if (code == null)
+            {
+                Random rand = new Random();
+                code = "";
+                for(int i = 0; i < 6; i++)
+                {
+                    char tmp = Convert.ToChar(rand.Next(48, 58));
+                    code += tmp;
+                }
+            }
+            return code;
+        }
+
+        public IActionResult SendCode(string UserMail)
+        {
+            var user = c.Users.FirstOrDefault(x => x.UserMail.Equals(UserMail));
+            if (user != null)
+            {
+                c.Add(new PasswordCode { Userid = user.Userid, Code = getCode() });
+                c.SaveChanges();
+                string text = "<h1>Sıfırlama için kodunuz:</h1>" + getCode() + " ";
+                string subject = "Parola sifirlama";
+                MailMessage msg = new MailMessage("firmalogoinf@gmail.com", UserMail,subject,text);
+                msg.IsBodyHtml = true;
+                SmtpClient sc = new SmtpClient("smtp.gmail.com", 587);
+                sc.UseDefaultCredentials = false;
+                NetworkCredential cre = new NetworkCredential("firmalogoinf@gmail.com", "555K1818p..pp");
+                sc.Credentials = cre;
+                sc.EnableSsl = true;
+                sc.Send(msg);
+                return RedirectToAction("ResetPassword");
+            }
+
+            return RedirectToAction("Index");
+        }
+       
+        public IActionResult ResetPasswordCode(string code,string UserSifre)
+        {
+            var passwordcode = c.PasswordCodes.FirstOrDefault(x => x.Code.Equals(code));
+            if (passwordcode != null)
+            {
+                var user = c.Users.Find(passwordcode.Userid);
+                user.UserSifre = UserSifre;
+                c.Update(user);
+                c.Remove(passwordcode);
+                c.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return RedirectToAction("Index");
+        }
+
     }
 }
