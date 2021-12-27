@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EBusiness.Repositories;
 
 namespace EBusiness.Controllers
 {
@@ -85,5 +86,14 @@ namespace EBusiness.Controllers
             c.SaveChanges();
             return RedirectToAction("Index");
         }
+
+   
+
+ 
+        public IActionResult ProductDetail(int id)
+        {            
+            return View();
+        }
+
     }
 }
