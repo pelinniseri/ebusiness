@@ -7,7 +7,7 @@
         @foreach (var item in Model)
         {
 
-
+        <a href="/Product/ProductGetInDetails/@item.ProductID">
 
             <div class="product">
                 <div class="product-header">
@@ -16,7 +16,7 @@
                     <ul class="icons">
                         <span><i class="bx bx-heart"></i></span>
                         <span><i class="bx bx-shopping-bag"></i></span>
-                        
+
                     </ul>
                 </div>
                 <div class="product-footer">
@@ -33,10 +33,12 @@
                         <i class="bx bx-star"></i>
                     </div>
                     <h4 class="price">@item.Price €</h4>
-                   
-                    <h5 >Stok: @item.Stock</h5>
+
+                    <h5>Stok: @item.Stock</h5>
                 </div>
             </div>
+
+        </a>
 
 
         }

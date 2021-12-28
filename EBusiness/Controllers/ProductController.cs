@@ -13,7 +13,7 @@ using X.PagedList;
 
 namespace EBusiness.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class ProductController : Controller
     {
         Context c = new Context();
@@ -69,6 +69,8 @@ namespace EBusiness.Controllers
             return RedirectToAction("Index");
         }
 
+
+        
         public IActionResult ProductGet(int id)
         {
             var x = productRepository.TFind(id);
@@ -108,5 +110,38 @@ namespace EBusiness.Controllers
             return RedirectToAction("Index");
 
         }
+
+        public IActionResult ProductGetInDetails(int id)
+        {
+            var x = productRepository.TFind(id);
+
+            List<SelectListItem> values = (from y in c.Categories.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = y.CategoryName,
+                                               Value = y.CategoryID.ToString(),
+                                           }).ToList();
+            ViewBag.v1 = values;
+            Product prdct = new Product()
+            {
+                ProductID = x.ProductID,
+                CategoryID = x.CategoryID,
+                ProductName = x.ProductName,
+                Price = x.Price,
+                Stock = x.Stock,
+                Description = x.Description,
+                ImageUrl = x.ImageUrl,
+
+            };
+
+            //ViewData["CatName"] = prdct.Category.CategoryName;
+            ViewData["ProductName"] = prdct.ProductName;
+            ViewData["Price"] = prdct.Price;
+            ViewData["Description"] = prdct.Description;
+            ViewData["Image"] = prdct.ImageUrl;
+            return View(prdct);
+        }
+
+
     }
 }

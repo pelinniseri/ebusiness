@@ -1,0 +1,70 @@
+﻿
+@model List<EBusiness.Data.Models.Product>
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/Frontend/images/favicon.ico" type="image/x-icon">
+    <!-- Box icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+
+
+
+
+
+
+    <!-- Custom StyleSheet -->
+    <link rel="stylesheet" href="~/Frontend/css/styles.css" />
+    <title>Codevo - Ecommerce Website</title>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="home" class="header">
+
+
+
+
+
+
+
+
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td style="font-size: 20px;">@x.ProductID</td>
+                <td style="font-size: 20px;">@x.ProductName</td>
+                <td style="font-size: 20px;">@x.Price</td>
+               
+
+              
+            </tr>
+        }
+
+    </header>
+
+
+
+
+
+
+
+
+
+   
+
+</body>
+
+</html>
+
