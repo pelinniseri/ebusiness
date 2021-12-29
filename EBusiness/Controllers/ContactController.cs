@@ -88,10 +88,13 @@ namespace EBusiness.Controllers
         }
 
    
-
- 
         public IActionResult ProductDetail(int id)
         {            
+            return View();
+        }
+
+        public IActionResult Cart(int id)
+        {
             return View();
         }
 
