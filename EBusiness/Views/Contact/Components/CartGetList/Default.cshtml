@@ -1,0 +1,15 @@
+﻿@model List<System.Tuple<EBusiness.Data.Models.Product, int>>
+<div class="dropdown-content">
+    @foreach(var item in Model)
+        {
+            <div style="height:50px; line-height:50px">
+                <img style="max-width: 50px; max-height: 50px; vertical-align: middle" src="@item.Item1.ImageUrl" alt="">
+                <span style="vertical-align: middle">
+                    @item.Item1.ProductName
+                    @item.Item1.Price
+                    @item.Item2
+                </span>
+            </div>
+
+        }
+</div>
