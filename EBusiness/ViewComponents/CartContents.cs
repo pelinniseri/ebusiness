@@ -17,11 +17,6 @@ namespace EBusiness.ViewComponents
             List<Tuple<Product, int>> cartContents = new List<Tuple<Product, int>>();
             List<Tuple<int, int>> cartList = SessionManager.GetCart(HttpContext.Session);
 
-            //Debug mock data
-            //List<Tuple<int, int>> cartList = new List<Tuple<int, int>>();
-            //cartList.Add(new Tuple<int, int>(3, 1));
-            //cartList.Add(new Tuple<int, int>(5, 2));
-
             // Turn id, amount tuple to product, amount tuple
             foreach (Tuple<int, int> item in cartList)
             {

@@ -94,8 +94,19 @@ namespace EBusiness.Controllers
             return View();
         }
 
-        public IActionResult Cart(int id)
+        public IActionResult Cart()
         {
+            var cart = SessionManager.GetCart(HttpContext.Session);
+            ProductRepository productRepository = new ProductRepository();
+
+            //Calculate total price
+            ViewBag.totalPrice = 0;
+            foreach (var item in cart)
+            {
+                Product product = productRepository.TFind(item.Item1);
+                ViewBag.totalPrice += product.Price * item.Item2;
+            }
+
             return View();
         }
 
@@ -122,5 +133,39 @@ namespace EBusiness.Controllers
             return RedirectToAction("Cart");
         }
 
+        public IActionResult RemoveFromCart(int id)
+        {
+            var cart = SessionManager.GetCart(HttpContext.Session);
+            var product = cart.Find(item => { return item.Item1 == id; });
+            cart.Remove(product);
+            SessionManager.SetCart(HttpContext.Session, cart);
+
+            return RedirectToAction("Cart");
+        }
+
+        public IActionResult IncreaseCartAmount(int id)
+        {
+            var cart = SessionManager.GetCart(HttpContext.Session);
+            int index = cart.FindIndex(item => { return item.Item1 == id; });
+            var increasedProduct = new Tuple<int, int>(cart[index].Item1, cart[index].Item2 + 1);
+            cart.RemoveAt(index);
+            cart.Add(increasedProduct);
+            SessionManager.SetCart(HttpContext.Session, cart);
+
+            return RedirectToAction("Cart");
+        }
+
+        public IActionResult DecreaseCartAmount(int id)
+        {
+            var cart = SessionManager.GetCart(HttpContext.Session);
+            int index = cart.FindIndex(item => { return item.Item1 == id; });
+            var decreasedProduct = new Tuple<int, int>(cart[index].Item1, cart[index].Item2 - 1);
+            cart.RemoveAt(index);
+            if(decreasedProduct.Item2 > 0)
+                cart.Add(decreasedProduct);
+            SessionManager.SetCart(HttpContext.Session, cart);
+
+            return RedirectToAction("Cart");
+        }
     }
 }
