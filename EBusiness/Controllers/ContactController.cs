@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EBusiness.Repositories;
+using EBusiness.Data;
 
 namespace EBusiness.Controllers
 {
@@ -96,6 +97,29 @@ namespace EBusiness.Controllers
         public IActionResult Cart(int id)
         {
             return View();
+        }
+
+        public IActionResult AddToCart(int id)
+        {
+            var cart = SessionManager.GetCart(HttpContext.Session);
+
+            //Check if product already exists
+            int index = cart.FindIndex(item => { return item.Item1 == id; });
+            if(index == -1)
+            {
+                //Product does not exist
+                cart.Add(new Tuple<int, int>(id, 1));
+            }
+            else
+            {
+                //Product already exists in cart
+                var increasedProduct = new Tuple<int, int>(cart[index].Item1, cart[index].Item2 + 1);
+                cart.RemoveAt(index);
+                cart.Add(increasedProduct);
+            }
+            SessionManager.SetCart(HttpContext.Session, cart);
+
+            return RedirectToAction("Cart");
         }
 
     }

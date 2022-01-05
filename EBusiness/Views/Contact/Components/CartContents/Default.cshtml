@@ -1,0 +1,19 @@
+﻿@model List<System.Tuple<EBusiness.Data.Models.Product, int>>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <div class="cart-info">
+                    <img src="@item.Item1.ImageUrl" alt="">
+                    <div>
+                        <p>@item.Item1.ProductName</p>
+                        <span>Price: $@item.Item1.Price</span>
+                        <br />
+                        <a href="#">remove</a>
+                    </div>
+                </div>
+            </td>
+            <td>@item.Item2</td>
+            <td>$@(item.Item1.Price * item.Item2)</td>
+        </tr>
+    }
