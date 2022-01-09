@@ -6,16 +6,12 @@ using System.Threading.Tasks;
 
 namespace EBusiness.Data.Models
 {
-    public class Context: DbContext
+    public class Context: IContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=DESKTOP-OBUOUFV;database=ecbusinessDB;integrated security=true;");
+            optionsBuilder.UseSqlServer("server=localhost;database=ecbusinessDB;integrated security=true;");
         }
-        public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Admin> Admins{ get; set; }
-        public virtual DbSet<PasswordCode> PasswordCodes{ get; set; }
+
     }
 }

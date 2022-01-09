@@ -6,8 +6,15 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EBusiness", "EBusiness\EBusiness.csproj", "{53D7D456-314A-4910-A9C0-CF716417C6E0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EbuisnessUnitTest", "UnitTestData\EbuisnessUnitTest.csproj", "{4A996C3A-F45D-42E0-9754-3764FD90EC61}"
+	ProjectSection(ProjectDependencies) = postProject
+		{53D7D456-314A-4910-A9C0-CF716417C6E0} = {53D7D456-314A-4910-A9C0-CF716417C6E0}
+		{8A3CA8CA-90B4-46C8-9641-EBBD890B4F81} = {8A3CA8CA-90B4-46C8-9641-EBBD890B4F81}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EBuisnessProcessors", "EBuisnessProcessors\EBuisnessProcessors.csproj", "{8A3CA8CA-90B4-46C8-9641-EBBD890B4F81}"
+	ProjectSection(ProjectDependencies) = postProject
+		{53D7D456-314A-4910-A9C0-CF716417C6E0} = {53D7D456-314A-4910-A9C0-CF716417C6E0}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

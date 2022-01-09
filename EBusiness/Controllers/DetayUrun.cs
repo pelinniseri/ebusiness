@@ -10,6 +10,13 @@ namespace EBusiness.Controllers
 {
     public class DetayUrun : Controller
     {
+        public DetayUrun(Context cx,ProductRepository pr)
+        {
+            this.c = cx;
+            this.productRepository = pr;
+        }
+        public DetayUrun() { }
+
         ProductRepository productRepository = new ProductRepository();
         Context c = new Context();
         public IActionResult Index(int id)

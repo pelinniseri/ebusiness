@@ -16,6 +16,13 @@ namespace EBusiness.Controllers
     //[Authorize(Roles = "Admin")]
     public class ProductController : Controller
     {
+        public ProductController(Context con, ProductRepository pr)
+        {
+            this.productRepository = pr;
+            this.c = con;
+        }
+        public ProductController() { }
+
         Context c = new Context();
         ProductRepository productRepository = new ProductRepository();
         public IActionResult Index(int page=1)
@@ -57,8 +64,7 @@ namespace EBusiness.Controllers
             //product.Stock = pr.Stock;
             //product.CategoryID = pr.CategoryID;
             //product.Description = pr.Description;
-            
-            productRepository.TAdd(pr);
+            if(!pr.Equals(null)) productRepository.TAdd(pr);
             return RedirectToAction("Index");
         }
 

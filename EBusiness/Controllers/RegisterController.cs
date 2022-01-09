@@ -9,6 +9,14 @@ namespace EBusiness.Controllers
 {
     public class RegisterController : Controller
     {
+        public RegisterController()
+        {
+
+        }
+        public RegisterController(Context cx)
+        {
+            this.c = cx;
+        }
         Context c = new Context();
         public IActionResult Index()
         {
