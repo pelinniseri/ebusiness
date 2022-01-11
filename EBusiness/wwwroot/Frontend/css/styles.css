@@ -31,7 +31,7 @@ body {
     font-size: 1.6rem;
     font-weight: 400;
     background-color: #fff;
-    /*background: url(../images/bg.jpg) repeat 0px 0px;*/
+    background: url(../images/bg.jpg) repeat 0px 0px;
     color: #243a6f;
     position: relative;
     z-index: 1;

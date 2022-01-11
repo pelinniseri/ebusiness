@@ -1,3 +1,4 @@
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -5,28 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="~/Frontend/images/favicon.ico" type="image/x-icon">
-
     <!-- Box icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-
     <!--Font Awesome Icons-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
-    <!-- Glidejs -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css" />
-
     <!-- Custom StyleSheet -->
-    <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="~/Frontend/css/styles.css" />
-    <title>E-Commerce - Your Cart</title>
 
+    <title>Codevo - Ecommerce Website</title>
+    <link rel="stylesheet" media="screen and (min-width: 900px)" href="widescreen.css">
 </head>
-
 <body>
+
     <!-- Header -->
     <header id="home" class="header">
         <!-- Navigation -->
@@ -38,35 +33,36 @@
 
                 <div class="menu">
                     <div class="top-nav">
-
                         <div class="logo">
                             <h1>Codevo</h1>
                         </div>
-
                         <div class="close">
                             <i class="bx bx-x"></i>
                         </div>
-
                     </div>
+
                     <ul class="nav-list">
 
                         <li class="dropdown">
-                            <a href="javascript:void(0)" class="dropbtn">Kategorien</a>
-                            @await Component.InvokeAsync("CategoryGetList")
+                            <a href="javascript:void(0)" class="nav-link scroll-link">Kategorien</a>
+                            @*<a href="javascript:void(0)" class="dropbtn">Kategorien</a>*@
+                            @*@await Component.InvokeAsync("CategoryGetList")*@
                         </li>
-
                         <li class="nav-item">
-                            <a href="/Contact/Konto/" class="nav-link scroll-link">Konto</a>
+                            <a href="#about" class="dropbtn">Über</a>
                         </li>
-
+                        @*<li class="nav-item">
+                                <a href="#contact" class="nav-link scroll-link">Kontakt</a>
+                            </li>*@
+                        <li class="nav-item">
+                            <a href="#account" class="nav-link scroll-link">Konto</a>
+                        </li>
                         <li class="nav-item">
                             <a href="/Login/LogOutForUser/" class="nav-link scroll-link">Ausloggen</a>
                         </li>
-
                         <li class="nav-item">
                             <a href="cart.html" class="nav-link icon"><i class="bx bx-shopping-bag"></i></a>
                         </li>
-
                     </ul>
                 </div>
 
@@ -77,43 +73,53 @@
                 <div class="hamburger">
                     <i class="bx bx-menu"></i>
                 </div>
-
             </div>
         </nav>
+        @RenderBody()
 
-        <a href="cart.html" class="cart-icon">
-            <i class="bx bx-shopping-bag"></i>
-        </a>
 
-        <div class="hamburger">
-            <i class="bx bx-menu"></i>
-        </div>
-
-        <!-- Cart Items -->
-        <div class="container-md cart">
-            <table>
-                <tr>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Subtotal</th>
-                </tr>
-                @await Component.InvokeAsync("CartContents")
-            </table>
-
-            <div class="total-price">
-                <table>
-                    <td>Total</td>
-                    <td>$@ViewBag.totalPrice</td>
-                </table>
-
-                <a href="/Contact/Order" class="checkout btn">Proceed To Checkout</a>
-
-            </div>
-
-        </div>
+        @*<img src="~/Frontend/images/hdr.png" alt="" class="hero-img" />
+            <div class="hero-content">
+                <h2><span class="discount">50% </span>AUSVERKAUF</h2>
+                <h1>
+                    <span>Cyber-Montag</span>
+                    <span>Sonderangebot</span>
+                </h1>
+                <a class="btn" href="#">JETZT EINKAUFEN</a>
+            </div>*@
 
     </header>
 
+    @*brand*@
+    <main>
+        <section class="section-brand" style="padding-bottom:15px">
+            <div class="brands-center container">
+                <div class="brand">
+                    <img src="~/Frontend/images/brnd1.png" alt="" />
+                </div>
+                <div class="brand">
+                    <img src="~/Frontend/images/brnd2.png" alt="" />
+                </div>
+                <div class="brand">
+                    <img src="~/Frontend/images/brnd3.png" alt="" />
+                </div>
+                <div class="brand">
+                    <img src="~/Frontend/images/brnd4.png" alt="" />
+                </div>
+                <div class="brand">
+                    <img src="~/Frontend/images/mi.png" alt="" />
+                </div>
+                <div class="brand">
+                    <img src="~/Frontend/images/brnd6.png" alt="" />
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    @*@await Component.InvokeAsync("ProductGetList")*@
+
+    @*footer*@
     <footer id="footer" class="section footer">
         <div class="container">
             <div class="footer-container">
@@ -144,32 +150,30 @@
                 <div class="footer-center">
                     <h3>KONTAKTIERE UNS</h3>
                     <div>
+                        <i class="fa fa-map-marker-alt" style="color:white;"></i>
                         <span>
-                            <i class="fas fa-map-marker-alt"></i>
+                            34500 Beykoz,Istanbul, Turkey
                         </span>
-                        34500 Beykoz,Istanbul, Turkey
                     </div>
                     <div>
-                        <span>
-                            <i class="far fa-envelope"></i>
-                        </span>
-                        company@gmail.com
+                        <a href="mailto:company@gmail.com" title="Senden Sie uns eine E-Mail!">
+                            <i class="fa fa-envelope" style="color:white"></i>
+                            <span>company@gmail.com</span>
+                        </a>
                     </div>
                     <div>
+                        <i class="fa fa-phone" style="color:white;"></i>
                         <span>
-                            <i class="fas fa-phone"></i>
+                            +90-456-456-4512
                         </span>
-                        +90-456-456-4512
                     </div>
                     <div>
-                        <span>
-                            <i class="far fa-paper-plane"></i>
-                        </span>
-                        Istanbul, Turkey
+                        <i class="fas fa-map-marked-alt" style="color:white"></i>
+                        <span>Istanbul, Turkey</span>
                     </div>
+
                 </div>
             </div>
-        </div>
         </div>
     </footer>
     <!-- End Footer
@@ -177,7 +181,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
     <!-- Custom Script -->
     <script src="~/Frontend/js/index.js"></script>
-    <script src="./js/index.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -187,8 +190,14 @@
 </html>
 
 <style>
+    /*section{
+        display:block;
+    }*/
+    /*.section {
+        padding: 10rem 0 5rem 0;
+    }*/
 
-    ul {
+    .ul {
         list-style-type: none !important;
         margin: 0 !important;
         padding: 0 !important;
@@ -196,11 +205,11 @@
         background-color: none !important;
     }
 
-    li {
+    .li {
         float: left;
     }
 
-        li a, .dropbtn {
+        .li a, .dropbtn {
             display: inline-block !important;
             color: white !important;
             text-align: center !important;
@@ -208,11 +217,11 @@
             text-decoration: none !important;
         }
 
-            li a:hover, .dropdown:hover .dropbtn {
+            .li a:hover, .dropdown:hover .dropbtn {
                 background-color: #ff728a !important;
             }
 
-        li.dropdown {
+        .li.dropdown {
             display: inline-block !important;
         }
 
@@ -240,4 +249,54 @@
     .dropdown:hover .dropdown-content {
         display: block !important;
     }
+
+
+    /*brand*/
+    .brands-center {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 3rem;
+    }
+
+    .brand {
+        height: 8rem;
+        width: 8rem;
+        margin: 0 auto;
+    }
+
+
+        .brand img {
+            object-fit: contain;
+        }
+
+    .section {
+        padding: 10rem 0 5rem 0;
+    }
+
+    .section-brand {
+        /*background-color: #fcc1a3;*/
+    }
+
+    /*.div.brands-center.container {
+        background-color: #fdc5a0;
+    }*/
+
+
+    img {
+        max-width: 100%;
+    }
+
+    @@media only screen and (max-width: 768px) {
+        .brands-center {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    /*.container::after, .row::after {
+            content: "";
+            clear: both;
+            display: table;
+    }*/
+
 </style>
+
