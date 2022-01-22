@@ -182,5 +182,14 @@ namespace EBusiness.Controllers
 
             return RedirectToAction("Cart");
         }
+
+        public IActionResult EmptyCart()
+        {
+            var cart = SessionManager.GetCart(HttpContext.Session);
+            cart.Clear();
+            SessionManager.SetCart(HttpContext.Session, cart);
+
+            return RedirectToAction("Cart");
+        }
     }
 }
