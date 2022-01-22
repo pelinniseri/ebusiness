@@ -129,10 +129,25 @@ namespace EBusiness.Controllers
                 cart.Add(increasedProduct);
             }
             SessionManager.SetCart(HttpContext.Session, cart);
-
+            ViewBag.card = cart;
             return RedirectToAction("Cart");
         }
-
+        //DEGİŞİKLİK
+        public IActionResult Order()
+        {
+            var cart = SessionManager.GetCart(HttpContext.Session);
+            ViewBag.card = cart;
+            ViewBag.totalPrice = 0;
+            ViewBag.ItemCount = 0;
+            ProductRepository productRepository = new ProductRepository();
+            foreach (var item in cart)
+            {
+                ViewBag.ItemCount += 1;
+                Product product = productRepository.TFind(item.Item1);
+                ViewBag.totalPrice += product.Price * item.Item2;
+            }
+            return RedirectToAction("Index","Order");
+        }
         public IActionResult RemoveFromCart(int id)
         {
             var cart = SessionManager.GetCart(HttpContext.Session);
