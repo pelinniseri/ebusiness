@@ -13,6 +13,7 @@ namespace EBusiness.Controllers
 {
     public class OrderController : Controller
     {
+        Context c = new Context();
         public IActionResult Index()
         {
             
@@ -29,26 +30,72 @@ namespace EBusiness.Controllers
             }
             return View();
         }
-        public IActionResult SendMail(Order model)
+        public IActionResult OrderApprove(int id)
+        {
+            var order = c.Orders.Find(id);
+            order.Status = true;
+            c.Orders.Update(order);
+            c.SaveChanges();
+
+            return RedirectToAction("OrderApproved");
+        }
+        public IActionResult OrderApproved()
+        {
+            return View();
+        }
+        public IActionResult ForwardMail()
+        {
+            return View();
+        }
+
+
+        public IActionResult SendMail(OrderMail model)
         {
             if (model != null)
             {
-                string text = "<h1>Sipariş bilgileri</h1>" + "<label>" + model.FirstName + "</label>" + "<br>" + "<label>" + model.Address + "</label>" + "<label>" + model.CardNumber + "</label>"
+                var order = new Order();
+                order.UserID = 1;
+                order.Address = model.Address;
+                order.CardName = model.CardName;
+                order.CardNumber = model.CardNumber;
+                order.City = model.City;
+                order.CVV = model.CVV;
+                order.Email = model.Email;
+                order.ExpJahr = model.ExpJahr;
+                order.ExpMonat = model.ExpMonat;
+                order.FirstName = model.FirstName;
+                order.SameAddr = model.SameAddr;
+                order.ZipCode = model.ZipCode;
+                order.State = model.State;
+                order.Status = false;
+
+                c.Orders.Add(order);
+                c.SaveChanges();
+                int orderId = order.OrderID;
+                string text = "<h1>Sipariş bilgileri</h1>" + "<label>Müşteri : </label><label>" + model.FirstName + "</label>" + "<br>" + "<label>Adres : </label><label>" + model.Address + "</label>" + "<br>" + "<label>Kart Numarası : </label><label>" + model.CardNumber + "</label>"
                     + "<br>";
                 text += "<br><table><thead><th>Ürün Adı</th><th> Miktar </th><th> Fiyat </th></thead><tbody>";
                 var cart = SessionManager.GetCart(HttpContext.Session);
                 ProductRepository productRepository = new ProductRepository();
                 foreach (var item in cart)
                 {
+                   
                     text += "<tr>";
                     Product product = productRepository.TFind(item.Item1);
+                    var orderProduct = new OrderProduct();
+                    orderProduct.OrderID = orderId;
+                    orderProduct.ProductName = product.ProductName;
+                    orderProduct.Price = product.Price;
+                    orderProduct.Stock = item.Item2;
+                    c.OrderProducts.Add(orderProduct);
+                    c.SaveChanges();
                     text += "<td>" + product.ProductName + "</td>";
                     text += "<td>" + item.Item2 + "</td>";
                     text += "<td>" + product.Price * item.Item2 + "</td>";
                     text += "</tr>";
                 }
                 text += "</tbody></table><br>";
-                text+="Siparişi onaylıyor musunuz?" + "<br>"+ "<a href=\"https://localhost:44311/Order\" class=\"button\">Siparişi onalamak için lütfen bağlantıya tıklayınız.</a>";
+                text+="Siparişi onaylıyor musunuz?" + "<br>"+ "<a href=\"https://localhost:44311/Order/OrderApprove/" + orderId + "\" class=\"button\">Siparişinizi onaylamak için lütfen bağlantıya tıklayınız.</a>";
               
                 string subject = "Sipariş";
                 MailMessage msg = new MailMessage("firmalogoinf@gmail.com", model.Email, subject, text);
@@ -59,7 +106,7 @@ namespace EBusiness.Controllers
                 sc.Credentials = cre;
                 sc.EnableSsl = true;
                 sc.Send(msg);
-                return RedirectToAction("Index");
+                return RedirectToAction("ForwardMail");
             }
 
             return RedirectToAction("Index");

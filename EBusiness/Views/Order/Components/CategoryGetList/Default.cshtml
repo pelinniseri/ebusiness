@@ -1,0 +1,10 @@
+﻿@model IEnumerable<EBusiness.Data.Models.Category>
+<div class="dropdown-content">
+    @foreach (var item in Model)
+    {
+        <a href="/Contact/CategoryDetails/@item.CategoryID">@item.CategoryName</a>
+
+    }
+
+
+</div>

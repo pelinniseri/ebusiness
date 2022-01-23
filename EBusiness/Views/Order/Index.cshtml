@@ -2,7 +2,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AboutLayout.cshtml";
 }
-@model EBusiness.Data.Models.Order
+@model EBusiness.Data.Models.OrderMail
 
     <div>
         <div class="row">
@@ -85,7 +85,7 @@
 
                         </div>
                         <label>
-                            @Html.Label("Lieferadresse wie Rechnungsadresse")
+                            
                             @Html.CheckBoxFor(x => x.SameAddr, new { @type = "checkbox" })
                             @*<input type="checkbox" checked="checked" name="sameadr">*@ Lieferadresse wie Rechnungsadresse
                         </label>

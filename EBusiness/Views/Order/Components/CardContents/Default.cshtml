@@ -2,7 +2,7 @@
 
 @foreach (var item in Model)
  {
-    <p><a href="/Product/ProductGetInDetails/@item.Item1.ProductID">@item.Item1.ProductName</a><span class="price">@item.Item2</span><span class="price">$@(item.Item1.Price * item.Item2)</span></p>
+    <p><a href="/Product/ProductGetInDetails/@item.Item1.ProductID">@item.Item1.ProductName</a><span class="price">x@(item.Item2)</span><span class="price">$@(item.Item1.Price * item.Item2)</span></p>
  }
       
 
