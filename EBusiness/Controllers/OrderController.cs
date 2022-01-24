@@ -72,9 +72,9 @@ namespace EBusiness.Controllers
                 c.Orders.Add(order);
                 c.SaveChanges();
                 int orderId = order.OrderID;
-                string text = "<h1>Sipariş bilgileri</h1>" + "<label>Müşteri : </label><label>" + model.FirstName + "</label>" + "<br>" + "<label>Adres : </label><label>" + model.Address + "</label>" + "<br>" + "<label>Kart Numarası : </label><label>" + model.CardNumber + "</label>"
+                string text = "<h1>Bestellinformationen</h1>" + "<label>Kunde : </label><label>" + model.FirstName + "</label>" + "<br>" + "<label>Adresse : </label><label>" + model.Address + "</label>" + "<br>" + "<label>Kreditkartennummer : </label><label>" + model.CardNumber + "</label>"
                     + "<br>";
-                text += "<br><table><thead><th>Ürün Adı</th><th> Miktar </th><th> Fiyat </th></thead><tbody>";
+                text += "<br><table><thead><th>   Produktname   </th><th>   Produktmenge   </th><th>   Preis   </th></thead><tbody>";
                 var cart = SessionManager.GetCart(HttpContext.Session);
                 ProductRepository productRepository = new ProductRepository();
                 foreach (var item in cart)
@@ -93,11 +93,15 @@ namespace EBusiness.Controllers
                     text += "<td>" + item.Item2 + "</td>";
                     text += "<td>" + product.Price * item.Item2 + "</td>";
                     text += "</tr>";
+                    var stock = c.Products.Find(product.ProductID);
+                    stock.Stock -= item.Item2;
+                    c.Products.Update(stock);
+                    c.SaveChanges(); 
                 }
                 text += "</tbody></table><br>";
-                text+="Siparişi onaylıyor musunuz?" + "<br>"+ "<a href=\"https://localhost:44311/Order/OrderApprove/" + orderId + "\" class=\"button\">Siparişinizi onaylamak için lütfen bağlantıya tıklayınız.</a>";
+                text+= "Bestätigen Sie die Bestellung?" + "<br>"+ "<a href=\"https://localhost:44311/Order/OrderApprove/" + orderId + "\" class=\"button\">Bitte klicken Sie auf den Link, um Ihre Bestellung zu bestätigen.</a>";
               
-                string subject = "Sipariş";
+                string subject = "Bestellung";
                 MailMessage msg = new MailMessage("firmalogoinf@gmail.com", model.Email, subject, text);
                 msg.IsBodyHtml = true;
                 SmtpClient sc = new SmtpClient("smtp.gmail.com", 587);
