@@ -1,0 +1,143 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AboutLayout.cshtml";
+}
+<html>
+<body>
+
+    <div class="about-section">
+        <h1>
+            <span>über unseren Online-Shop</span>
+        </h1>
+    </div>
+
+    <div class="about-text">
+        <p>
+            Als bester Elektronikhändler Europas bieten wir unseren Kunden die zahlreichen Vorteile des Online-Handels,
+            von Computer und Handy bis hin zu Fernseh- und Displaysystemen, von Heimkinosystemen bis zu Kameras und Kameras,
+            von Spielekonsolen über Haushaltsgeräte bis hin zu Haushaltskleingeräten.
+        </p>
+    </div>
+
+
+    <div class="row">
+        <div class="column">
+            <div class="card">
+                <img src="~/Frontend/images/about1.jpg" alt="Jane" style="width:100%">
+                <div class="container">
+                    @*<h2>Jane Doe</h2>
+                        <p class="title">CEO & Founder</p>*@
+                    <p>Seit seiner Gründung im Jahr 2019 ist unser Unternehmen mit seinen 10000 Mitarbeitern gerne für unsere Kunden da.</p>
+                    @*<p>jane@example.com</p>
+                        <p><button class="button">Contact</button></p>*@
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <img src="~/Frontend/images/about2.jpeg" alt="Mike" style="width:100%">
+                <div class="container">
+                    @*<h2>Mike Ross</h2>
+                        <p class="title">Art Director</p>*@
+                    <p>Unsere Mission ist es, unseren Kunden den schnellsten, sichersten und bequemsten Online-Shopping für elektronische Geräte zu bieten.</p>
+                    @*<p>mike@example.com</p>
+                        <p><button class="button">Contact</button></p>*@
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <img src="~/Frontend/images/about3.jpg" alt="John" style="width:100%">
+                <div class="container">
+                    @*<h2>John Doe</h2>
+                        <p class="title">Designer</p>*@
+                    <p>Wir möchten Ihnen den besten Service mit einer maximalen Lieferzeit von 5 Tagen im Inland und 1 Monat außerhalb des Landes bieten.</p>
+                    @*<p>john@example.com</p>
+                        <p><button class="button">Contact</button></p>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+    .card {
+        /*height: 48rem;
+        background-color: white;
+        box-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 15%);
+        border-radius: 1rem;
+        text-align: center;
+        transition: all 300ms ease-in-out;*/
+        /*old*/
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        margin: 8px;
+    }
+
+    html {
+        box-sizing: border-box;
+    }
+
+    *, *:before, *:after {
+        box-sizing: inherit;
+    }
+
+    .column {
+        float: left;
+        width: 33.3%;
+        margin-bottom: 16px;
+        padding: 0 8px;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+        .container p {
+            padding: 15px;
+        }
+
+    .about-section {
+        padding: 50px;
+        text-align: center;
+        color: #253b70;
+    }
+
+        .about-section span {
+            color: #253b70;
+            font-size: 4rem;
+            font-weight: 700;
+            display: block;
+            line-height: 1;
+            text-shadow: 3px 3px 0 #f1f1f1, 4px 4px 0 #f1f1f1;
+        }
+
+    .button {
+        border: none;
+        outline: 0;
+        display: inline-block;
+        padding: 8px;
+        color: white;
+        background-color: #000;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .about-text {
+        text-indent: 15px;
+        margin-left: 10%;
+        margin-right: 10%;
+        padding: 10px;
+    }
+</style>
+
+
+
+
+
+
+
+
